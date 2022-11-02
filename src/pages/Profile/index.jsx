@@ -1,21 +1,20 @@
-import {useState} from 'react'
+import {useState} from 'react';
 import { firstNameAtom, lastNameAtom } from '../../stores/user.js';
 import { skillsAtom } from '../../stores/skills.js';
 import { useSetAtom } from 'jotai';
 
 const Profile = () => {
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [skills, setSkills] = useState("")
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [skills, setSkills] = useState("");
 
-  const setSkillsAtome = useSetAtom(skillsAtom)
-  const setFirstNameAtome = useSetAtom(firstNameAtom)
-  const setLastNameAtome = useSetAtom(lastNameAtom)
+  const setSkillsAtome = useSetAtom(skillsAtom);
+  const setFirstNameAtome = useSetAtom(firstNameAtom);
+  const setLastNameAtome = useSetAtom(lastNameAtom);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = {'firstNname': firstName, 'lastName': lastName, 'skills': skills.trim().split(',') };
-    console.log(user);
     setSkillsAtome(skills.trim().split(','));
     setFirstNameAtome(firstName);
     setLastNameAtome(lastName);
@@ -37,7 +36,7 @@ const Profile = () => {
   }
 
   return (
-    <div>
+    <div className='content'>
       <h1>Profile</h1>
       <form onSubmit={handleSubmit}>
         <label key={"first_name"}>
@@ -58,4 +57,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default Profile;

@@ -8,14 +8,18 @@ const Header = () => {
   const skillCount = useAtomValue(skillsCountAtom); 
 
   return (
-    <div>
-      <img src=''/>
-      <Link key={`home`} to={`/`}>Home </Link>
-      <Link key={`profile`} to={`/profile`}>Profile </Link>
-      <p key={'fullName'}>{fullName}</p>
-      <p key={'skillsCount'}>{skillCount} skills</p>
+    <div className={'header'}>
+      <img src='src/assets/react.svg' alt='react-logo'/>
+      <div>
+        <Link key={`home`} to={`/`}>Home </Link>
+        <Link key={`profile`} to={`/profile`}>Profile </Link>
+      </div>
+      <div>
+        <p key={'fullName'}>{fullName? fullName:'Unknown'}</p>
+        <p key={'skillsCount'}>{skillCount !== 0 ? skillCount + ' skills' : 'No skill'}</p>
+      </div>
     </div>
   )
 }
 
-export default Header
+export default Header;
